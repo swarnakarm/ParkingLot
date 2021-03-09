@@ -1,5 +1,6 @@
-package com.gojek.main.instruction.executor;
+package com.gojek.parking.main.instruction.executor;
 
+import com.gojek.parking.inventory.exception.InventoryAllocationException;
 import com.gojek.parking.lot.Parking;
 
 
@@ -22,9 +23,9 @@ public class LeaveExecutor implements InstructionExecutor {
 			int invSlot = Integer.parseInt(additionArgs[1]);
 			parkingLot.leave(invSlot);
 			System.out.println("Slot number " + invSlot + " is free");
-		} catch(Exception ex){
+		} catch(InventoryAllocationException ex){
 			System.out.println(ex.getMessage());
-		}
+		} 
 	}
 
 }

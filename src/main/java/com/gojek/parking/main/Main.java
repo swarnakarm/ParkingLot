@@ -1,12 +1,12 @@
-package com.gojek.main;
+package com.gojek.parking.main;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-import com.gojek.main.instruction.Instruction;
-import com.gojek.main.instruction.InstructionProcessor;
-import com.gojek.main.validator.Validator;
+import com.gojek.parking.main.instruction.Instruction;
+import com.gojek.parking.main.instruction.InstructionProcessor;
+import com.gojek.parking.main.validator.Validator;
 
 /**
  * 
@@ -29,13 +29,16 @@ public class Main {
 			while ((str = bfRead.readLine()) != null) {
 				System.out.println(str);
 				if(Validator.validateCommand(str)){
-					String command[] = str.split(" ");
-					Instruction instruction = Instruction.getInstruction(command[0]);
-					processor.execute(instruction, command);
+					String instructionLine[] = str.split(" ");
+					Instruction instruction = Instruction.getInstruction(instructionLine[0]);
+					processor.execute(instruction, instructionLine);
+				} else {
+					System.out.println("Invalid Command.");
 				}
 			}
-		} catch (Exception ex) {
-				System.out.println("Some Invalid Command received.");
+		}  catch (Exception ex) {
+				System.err.println("Some Exception occurred.");
+				ex.printStackTrace();
 		} finally {
 			try {
 				bfRead.close();

@@ -1,5 +1,6 @@
 package com.gojek.parking.inventory;
 
+import com.gojek.parking.inventory.exception.InventoryAllocationException;
 import com.gojek.parking.lot.ParkingSlot;
 
 /**
@@ -15,7 +16,7 @@ public class ParkingInventory {
 	int count = 0;
 	InventoryPriority comparator;
 
-	public ParkingInventory(int capacity, InventoryPriority comparator) {
+	public ParkingInventory(int capacity, InventoryPriority comparator) throws InventoryAllocationException {
 		this.comparator = comparator;
 		this.capacity = capacity;
 		this.inv = new ParkingSlot[capacity];
@@ -27,9 +28,9 @@ public class ParkingInventory {
 	}
 
 	boolean validate(ParkingSlot slot) {
-		if (slot.getParkingSeq() > 0 && slot.getParkingSeq() <= capacity){
-			for(int i=0;i<count;i++){
-				if(inv[i].getParkingSeq() == slot.getParkingSeq()){
+		if (slot.getParkingSeq() > 0 && slot.getParkingSeq() <= capacity) {
+			for (int i = 0; i < count; i++) {
+				if (inv[i].getParkingSeq() == slot.getParkingSeq()) {
 					return false;
 				}
 			}
@@ -39,9 +40,9 @@ public class ParkingInventory {
 		return true;
 	}
 
-	public ParkingSlot removeInv() throws RuntimeException {
+	public ParkingSlot removeInv() throws InventoryAllocationException {
 		if (count == 0) {
-			throw new RuntimeException("Inventory Exhausted");
+			throw new InventoryAllocationException("Inventory Exhausted");
 		}
 		ParkingSlot res = inv[0];
 		inv[0] = inv[count - 1];
@@ -71,7 +72,7 @@ public class ParkingInventory {
 		}
 	}
 
-	public void addInventory(ParkingSlot parkingSlot) {
+	public void addInventory(ParkingSlot parkingSlot) throws InventoryAllocationException {
 		if (validate(parkingSlot)) {
 			inv[count] = parkingSlot;
 			int index = count;
@@ -83,7 +84,7 @@ public class ParkingInventory {
 			}
 			count++;
 		} else {
-			throw new RuntimeException("Invalid SeqNo.");
+			throw new InventoryAllocationException("Invalid SeqNo.");
 		}
 	}
 

@@ -1,4 +1,4 @@
-package com.gojek.main.instruction.executor;
+package com.gojek.parking.main.instruction.executor;
 
 import com.gojek.parking.lot.Parking;
 /**

@@ -3,20 +3,20 @@ package com.gojek.parking.inventory;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.gojek.parking.inventory.exception.InventoryAllocationException;
 import com.gojek.parking.lot.ParkingSlot;
 
 public class InventroryAllocationTest {
 
 	/**
-	 * Test Cases 1. 
-	 * Test for SeqNo Order. 
-	 * Add 5 seqNo and Allocate all 5 inventory
-	 * Release SeqNo 5 then 2 then Allocate 1 inventory. 
-	 * SeqNo should be 2. 
+	 * 1. Test for SeqNo Order. 
+	 * Add 5 seqNo and Allocate all 5 inventory. 
+	 * Release SeqNo 5 then 2 then Allocate 1 inventory.
+	 * Assertion: SeqNo should be 2. 
 	 * Entry Gate Priority applied.
 	 */
 	@Test
-	public void inventoryOrderTest() {
+	public void inventoryOrderTest() throws Exception {
 		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
@@ -44,12 +44,11 @@ public class InventroryAllocationTest {
 	}
 
 	/**
-	 * 2. Test for Invalid SeqNo Order. 
-	 * Add 5 seqNo and Allocate all 5 inventory. 
-	 * Release SeqNo 6 - Invalid SeqNo.
+	 * 2. Test for Invalid SeqNo Order. Add 5 seqNo and Allocate all 5
+	 * inventory. Release SeqNo 6 - Invalid SeqNo.
 	 */
-	@Test(expected = RuntimeException.class)
-	public void inventoryInvalidSeqNoAdded() {
+	@Test(expected = InventoryAllocationException.class)
+	public void inventoryInvalidSeqNoAdded() throws Exception {
 		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
@@ -69,17 +68,14 @@ public class InventroryAllocationTest {
 		// Add back Invalid SeqNo.6
 		parkInv.addInventory(new ParkingSlot(6));
 	}
-	
-	
-	
+
 	/**
 	 * 
-	 * 3. Test for Invalid SeqNo Order. 
-	 * Add 5 seqNo and Allocate all 5 inventory 
+	 * 3. Test for Invalid SeqNo Order. Add 5 seqNo and Allocate all 5 inventory
 	 * Release SeqNo 5, then release seqNo 5 again. - Invalid SeqNo.
 	 */
-	@Test(expected = RuntimeException.class)
-	public void inventoryAddAlreadyPresentSeqNo() {
+	@Test(expected = InventoryAllocationException.class)
+	public void inventoryAddAlreadyPresentSeqNo() throws Exception {
 		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
@@ -96,12 +92,12 @@ public class InventroryAllocationTest {
 		ParkingSlot slot5 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 5", slot5.getParkingSeq(), 5);
 
-		// Add back  SeqNo.5
+		// Add back SeqNo.5
 		parkInv.addInventory(new ParkingSlot(5));
 
-		// Add again  SeqNo.5
+		// Add again SeqNo.5
 		parkInv.addInventory(new ParkingSlot(5));
 
 	}
-	
+
 }

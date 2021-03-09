@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.gojek.parking.inventory.InventoryPriority;
 import com.gojek.parking.inventory.ParkingInventory;
+import com.gojek.parking.inventory.exception.InventoryAllocationException;
 
 /**
  * Maintains Parking Slot.
@@ -21,13 +22,13 @@ public class Parking {
 
 	private Map<String, Set<Integer>> carColorInfoMap;
 
-	public Parking(int capacity, InventoryPriority comparator) {
+	public Parking(int capacity, InventoryPriority comparator) throws InventoryAllocationException {
 		parkingInv = new ParkingInventory(capacity, comparator);
 		carColorInfoMap = new HashMap<>();
 		slotMap = new HashMap<>();
 	}
 
-	public int park(Car car) {
+	public int park(Car car) throws InventoryAllocationException {
 		ParkingSlot parkingSlot = parkingInv.removeInv();
 		slotMap.put(parkingSlot.getParkingSeq(), car);
 		Set<Integer> slotSeqSet = carColorInfoMap.getOrDefault(car.getColour().toLowerCase(), new HashSet<>());
@@ -36,9 +37,9 @@ public class Parking {
 		return parkingSlot.getParkingSeq();
 	}
 
-	public void leave(int slotSeq) {
+	public void leave(int slotSeq) throws InventoryAllocationException {
 		Car car = slotMap.get(slotSeq);
-		if(car == null){
+		if (car == null) {
 			throw new RuntimeException("Slot was not allocated.");
 		}
 		Set<Integer> slotSeqSet = carColorInfoMap.get(car.getColour().toLowerCase());

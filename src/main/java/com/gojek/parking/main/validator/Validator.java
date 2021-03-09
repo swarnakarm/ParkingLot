@@ -1,6 +1,6 @@
-package com.gojek.main.validator;
+package com.gojek.parking.main.validator;
 
-import com.gojek.main.instruction.Instruction;
+import com.gojek.parking.main.instruction.Instruction;
 
 /**
  * 

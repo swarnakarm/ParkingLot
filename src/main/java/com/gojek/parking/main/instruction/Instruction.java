@@ -1,5 +1,6 @@
-package com.gojek.main.instruction;
+package com.gojek.parking.main.instruction;
 
+import com.gojek.parking.main.instruction.exception.InvalidInstructionException;
 
 /**
  * 
@@ -17,13 +18,13 @@ public enum Instruction {
 		this.instructionCode = instructionCode;
 	}
 
-	public static Instruction getInstruction(String instr) {
+	public static Instruction getInstruction(String instr) throws Exception {
 		for(Instruction ins :Instruction.values()){
 			if(ins.instructionCode.equals(instr)){
 				return ins;
 			}
 		}
-		throw new RuntimeException("Instruction Not Found");
+		throw new InvalidInstructionException("Instruction Not Found - "+instr);
 	}
 	
 }
