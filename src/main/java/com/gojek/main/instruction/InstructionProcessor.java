@@ -21,7 +21,7 @@ public class InstructionProcessor {
 			System.exit(1);
 			break;
 		default:
-			InstructionExecutor instructionExecutor = InstructionExecutorFactory.instantiate(parkingLot, instruction);
+			InstructionExecutor instructionExecutor = InstructionExecutorFactory.instantiate(this.parkingLot, instruction);
 			instructionExecutor.execute(additionArgs);
 			break;
 		}

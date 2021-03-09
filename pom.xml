@@ -39,6 +39,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>ParkingLot</finalName>
     </build>
 
 </project>

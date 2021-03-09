@@ -13,6 +13,7 @@ public class Validator {
 				if (command.length != 2 && Integer.parseInt(command[1]) < 1) {
 					return false;
 				}
+				break;
 			case PARK:
 				if (command.length != 3) {
 					/**
@@ -35,8 +36,10 @@ public class Validator {
 			default:
 				return true;
 			}
-		} 
-		return false;
+		}  else{
+			return false;
+		}
+		return true;
 	}
 
 	static Instruction isRegisteredInstruction(String keyword) {

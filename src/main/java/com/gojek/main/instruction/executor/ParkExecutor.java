@@ -15,7 +15,7 @@ public class ParkExecutor implements InstructionExecutor{
 	public void execute(String[] additionArgs){
 		try{
 			Car car = new Car(additionArgs[1], additionArgs[2]);
-			int invSlot = parkingLot.park(car);
+			int invSlot = this.parkingLot.park(car);
 			System.out.println("Allocated slot number: " + invSlot);
 		} catch(Exception ex){
 			System.out.println("Sorry, parking lot is full");
