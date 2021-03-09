@@ -17,7 +17,7 @@ public class InventroryAllocationTest {
 	 */
 	@Test
 	public void inventoryOrderTest() throws Exception {
-		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
+		ParkingInventory parkInv = new ParkingInventory(5, new EntryGateSeqNoPriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
 
@@ -49,7 +49,7 @@ public class InventroryAllocationTest {
 	 */
 	@Test(expected = InventoryAllocationException.class)
 	public void inventoryInvalidSeqNoAdded() throws Exception {
-		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
+		ParkingInventory parkInv = new ParkingInventory(5, new EntryGateSeqNoPriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
 
@@ -76,7 +76,7 @@ public class InventroryAllocationTest {
 	 */
 	@Test(expected = InventoryAllocationException.class)
 	public void inventoryAddAlreadyPresentSeqNo() throws Exception {
-		ParkingInventory parkInv = new ParkingInventory(5, new EntryGatePriority());
+		ParkingInventory parkInv = new ParkingInventory(5, new EntryGateSeqNoPriority());
 		ParkingSlot slot1 = parkInv.removeInv();
 		Assert.assertEquals("SeqNo should be 1", slot1.getParkingSeq(), 1);
 

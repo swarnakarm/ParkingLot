@@ -1,6 +1,6 @@
 package com.gojek.parking.main.instruction.executor;
 
-import com.gojek.parking.lot.Parking;
+import com.gojek.parking.lot.ParkingLot;
 import com.gojek.parking.main.instruction.Instruction;
 
 /**
@@ -10,7 +10,7 @@ import com.gojek.parking.main.instruction.Instruction;
  */
 public class InstructionExecutorFactory {
 
-	public static InstructionExecutor instantiate(Parking parkingLot, 
+	public static InstructionExecutor instantiate(ParkingLot parkingLot, 
 			Instruction instruction) {
 			switch(instruction){
 				case PARK:

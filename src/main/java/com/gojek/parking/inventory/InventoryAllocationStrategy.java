@@ -6,7 +6,7 @@ import com.gojek.parking.lot.ParkingSlot;
  * @author Manish Swarnakar
  *
  */
-public interface InventoryPriority {
+public interface InventoryAllocationStrategy {
 
 	int compare(ParkingSlot val1, ParkingSlot val2);
 	

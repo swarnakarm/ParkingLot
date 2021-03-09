@@ -2,7 +2,7 @@ package com.gojek.parking.main.instruction.executor;
 
 import com.gojek.parking.inventory.exception.InventoryAllocationException;
 import com.gojek.parking.lot.Car;
-import com.gojek.parking.lot.Parking;
+import com.gojek.parking.lot.ParkingLot;
 
 
 /**
@@ -12,9 +12,9 @@ import com.gojek.parking.lot.Parking;
  */
 public class ParkExecutor implements InstructionExecutor{
 
-	private Parking parkingLot;
+	private ParkingLot parkingLot;
 	
-	public ParkExecutor(Parking parkingLot){
+	public ParkExecutor(ParkingLot parkingLot){
 		this.parkingLot = parkingLot;
 	}
 	

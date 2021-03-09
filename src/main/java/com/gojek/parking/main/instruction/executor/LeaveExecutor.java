@@ -1,7 +1,7 @@
 package com.gojek.parking.main.instruction.executor;
 
 import com.gojek.parking.inventory.exception.InventoryAllocationException;
-import com.gojek.parking.lot.Parking;
+import com.gojek.parking.lot.ParkingLot;
 
 
 /**
@@ -11,9 +11,9 @@ import com.gojek.parking.lot.Parking;
  */
 public class LeaveExecutor implements InstructionExecutor {
 
-	private Parking parkingLot;
+	private ParkingLot parkingLot;
 
-	public LeaveExecutor(Parking parkingLot) {
+	public LeaveExecutor(ParkingLot parkingLot) {
 		this.parkingLot = parkingLot;
 	}
 

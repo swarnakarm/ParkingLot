@@ -14,10 +14,10 @@ public class ParkingInventory {
 	private int capacity;
 	ParkingSlot inv[];
 	int count = 0;
-	InventoryPriority comparator;
+	InventoryAllocationStrategy strategyComparator;
 
-	public ParkingInventory(int capacity, InventoryPriority comparator) throws InventoryAllocationException {
-		this.comparator = comparator;
+	public ParkingInventory(int capacity, InventoryAllocationStrategy comparator) throws InventoryAllocationException {
+		this.strategyComparator = comparator;
 		this.capacity = capacity;
 		this.inv = new ParkingSlot[capacity];
 		for (int i = 0; i < capacity; i++) {
@@ -57,11 +57,11 @@ public class ParkingInventory {
 		int rightChildIdx = 2 * index + 2;
 		int min = index;
 		if (leftChildIdx < capacity && inv[leftChildIdx] != null
-				&& comparator.compare(inv[leftChildIdx], inv[index]) < 0) {
+				&& strategyComparator.compare(inv[leftChildIdx], inv[index]) < 0) {
 			min = leftChildIdx;
 		}
 		if (rightChildIdx < capacity && inv[rightChildIdx] != null
-				&& comparator.compare(inv[rightChildIdx], inv[min]) < 0) {
+				&& strategyComparator.compare(inv[rightChildIdx], inv[min]) < 0) {
 			min = rightChildIdx;
 		}
 		if (min != index) {
@@ -76,7 +76,7 @@ public class ParkingInventory {
 		if (validate(parkingSlot)) {
 			inv[count] = parkingSlot;
 			int index = count;
-			while (index > 0 && comparator.compare(inv[(index - 1) / 2], inv[index]) > 0) {
+			while (index > 0 && strategyComparator.compare(inv[(index - 1) / 2], inv[index]) > 0) {
 				ParkingSlot tmp = inv[index];
 				inv[index] = inv[(index - 1) / 2];
 				inv[(index - 1) / 2] = tmp;

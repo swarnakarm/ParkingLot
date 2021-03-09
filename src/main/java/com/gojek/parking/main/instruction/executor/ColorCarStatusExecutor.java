@@ -3,7 +3,7 @@ package com.gojek.parking.main.instruction.executor;
 import java.util.Set;
 
 import com.gojek.parking.lot.Car;
-import com.gojek.parking.lot.Parking;
+import com.gojek.parking.lot.ParkingLot;
 
 
 /**
@@ -13,9 +13,9 @@ import com.gojek.parking.lot.Parking;
  */
 public class ColorCarStatusExecutor implements InstructionExecutor {
 
-	private Parking parkingLot;
+	private ParkingLot parkingLot;
 
-	public ColorCarStatusExecutor(Parking parkingLot) {
+	public ColorCarStatusExecutor(ParkingLot parkingLot) {
 		this.parkingLot = parkingLot;
 	}
 

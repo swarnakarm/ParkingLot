@@ -7,7 +7,7 @@ import com.gojek.parking.lot.ParkingSlot;
  * @author Manish Swarnakar
  *
  */
-public class EntryGatePriority implements InventoryPriority {
+public class EntryGateSeqNoPriority implements InventoryAllocationStrategy {
 
 	@Override
 	public int compare(ParkingSlot val1, ParkingSlot val2) {
