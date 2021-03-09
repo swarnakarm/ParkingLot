@@ -14,15 +14,15 @@ import com.gojek.parking.main.instruction.executor.InstructionExecutorFactory;
  */
 public class InstructionProcessor {
 
-	private ParkingLot parkingLot;
+	private ParkingLot parkingLot = null;
 
 	public void execute(Instruction instruction, String[] additionArgs)
 			throws InvalidInstructionException, InventoryAllocationException {
 		switch (instruction) {
 		case CREATE:
 			int parkingLotCount = Integer.parseInt(additionArgs[1]);
-			// Since Entry Gate Priority is Required.
-			if (parkingLot != null) {
+			if (parkingLot == null) {
+				// Since Entry Gate Priority is Required.
 				this.parkingLot = new ParkingLot(parkingLotCount, new EntryGateSeqNoPriority());
 			} else {
 				throw new InvalidInstructionException("Parking Lot is already created.");

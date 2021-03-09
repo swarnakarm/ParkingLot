@@ -17,7 +17,7 @@ import com.gojek.parking.main.validator.Validator;
 public class Main {
 
 	public static void main(String args[]) {
-		//args = new String[] { "/Users/b0208696/Downloads/parking_lot/functional_spec/fixtures/file_input.txt" };
+//		args = new String[] { "/Users/b0208696/Downloads/parking_lot/functional_spec/fixtures/file_input.txt" };
 		File file = new File(args[0]);
 		FileReader fRead = null;
 		BufferedReader bfRead = null;
