@@ -5,6 +5,12 @@ import java.util.Set;
 import com.gojek.parking.lot.Car;
 import com.gojek.parking.lot.Parking;
 
+
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public class ColorCarStatusExecutor implements InstructionExecutor {
 
 	private Parking parkingLot;

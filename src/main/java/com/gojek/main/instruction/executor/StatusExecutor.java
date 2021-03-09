@@ -1,7 +1,11 @@
 package com.gojek.main.instruction.executor;
 
 import com.gojek.parking.lot.Parking;
-
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public class StatusExecutor implements InstructionExecutor {
 
 	private Parking parkingLot;

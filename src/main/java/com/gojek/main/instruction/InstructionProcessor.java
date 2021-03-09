@@ -5,6 +5,11 @@ import com.gojek.main.instruction.executor.InstructionExecutorFactory;
 import com.gojek.parking.inventory.EntryGatePriority;
 import com.gojek.parking.lot.Parking;
 
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public class InstructionProcessor {
 
 	private Parking parkingLot;

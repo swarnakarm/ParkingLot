@@ -5,7 +5,7 @@ import com.gojek.parking.lot.ParkingSlot;
 /**
  * Min Heap Registered here for Parking Inventory.
  * 
- * @author b0208696
+ * @author Manish Swarnakar
  *
  */
 public class ParkingInventory {
@@ -26,6 +26,19 @@ public class ParkingInventory {
 		}
 	}
 
+	boolean validate(ParkingSlot slot) {
+		if (slot.getParkingSeq() > 0 && slot.getParkingSeq() <= capacity){
+			for(int i=0;i<count;i++){
+				if(inv[i].getParkingSeq() == slot.getParkingSeq()){
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
+		return true;
+	}
+
 	public ParkingSlot removeInv() throws RuntimeException {
 		if (count == 0) {
 			throw new RuntimeException("Inventory Exhausted");
@@ -38,7 +51,7 @@ public class ParkingInventory {
 		return res;
 	}
 
-	public void perlocateDown(int index) {
+	private void perlocateDown(int index) {
 		int leftChildIdx = 2 * index + 1;
 		int rightChildIdx = 2 * index + 2;
 		int min = index;
@@ -59,15 +72,19 @@ public class ParkingInventory {
 	}
 
 	public void addInventory(ParkingSlot parkingSlot) {
-		inv[count] = parkingSlot;
-		int index = count;
-		while (index > 0 && comparator.compare(inv[(index - 1) / 2], inv[index]) > 0) {
-			ParkingSlot tmp = inv[index];
-			inv[index] = inv[(index - 1) / 2];
-			inv[(index - 1) / 2] = tmp;
-			index = (index - 1) / 2;
+		if (validate(parkingSlot)) {
+			inv[count] = parkingSlot;
+			int index = count;
+			while (index > 0 && comparator.compare(inv[(index - 1) / 2], inv[index]) > 0) {
+				ParkingSlot tmp = inv[index];
+				inv[index] = inv[(index - 1) / 2];
+				inv[(index - 1) / 2] = tmp;
+				index = (index - 1) / 2;
+			}
+			count++;
+		} else {
+			throw new RuntimeException("Invalid SeqNo.");
 		}
-		count++;
 	}
 
 }

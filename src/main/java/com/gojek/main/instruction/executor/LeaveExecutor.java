@@ -2,6 +2,12 @@ package com.gojek.main.instruction.executor;
 
 import com.gojek.parking.lot.Parking;
 
+
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public class LeaveExecutor implements InstructionExecutor {
 
 	private Parking parkingLot;

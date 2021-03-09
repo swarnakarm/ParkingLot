@@ -8,10 +8,16 @@ import com.gojek.main.instruction.Instruction;
 import com.gojek.main.instruction.InstructionProcessor;
 import com.gojek.main.validator.Validator;
 
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
+
 public class Main {
 
 	public static void main(String args[]) {
-		args = new String[] { "/Users/b0208696/Downloads/parking_lot/functional_spec/fixtures/file_input.txt" };
+		//args = new String[] { "/Users/b0208696/Downloads/parking_lot/functional_spec/fixtures/file_input.txt" };
 		File file = new File(args[0]);
 		FileReader fRead = null;
 		BufferedReader bfRead = null;
@@ -29,20 +35,17 @@ public class Main {
 				}
 			}
 		} catch (Exception ex) {
-				System.err.println("Some Invalid Command received.");
-				ex.printStackTrace();
+				System.out.println("Some Invalid Command received.");
 		} finally {
 			try {
 				bfRead.close();
 			} catch (Exception ex) {
 				System.err.println("Buffered File Read exception");
-				ex.printStackTrace();
 			}
 			try {
 				fRead.close();
 			} catch (Exception ex) {
 				System.err.println("File Read exception");
-				ex.printStackTrace();
 			}
 		}
 

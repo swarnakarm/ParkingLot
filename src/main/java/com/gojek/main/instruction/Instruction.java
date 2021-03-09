@@ -1,5 +1,11 @@
 package com.gojek.main.instruction;
 
+
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public enum Instruction {
 
 	CREATE("create_parking_lot"),PARK("park"), LEAVE("leave"), STATUS("status"), 

@@ -2,6 +2,11 @@ package com.gojek.main.validator;
 
 import com.gojek.main.instruction.Instruction;
 
+/**
+ * 
+ * @author Manish Swarnakar
+ *
+ */
 public class Validator {
 
 	public static boolean validateCommand(String str) {
