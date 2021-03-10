@@ -17,9 +17,11 @@ import com.gojek.parking.inventory.exception.InventoryAllocationException;
  */
 public class ParkingLot {
 
-	private Map<Integer, Car> occupliedSlot;
+	
 	private ParkingInventory parkingInv;
+	
 	private Map<String, Set<Integer>> carColorInfoMap;
+	private Map<Integer, Car> occupliedSlot;
 
 	public ParkingLot(int capacity, InventoryAllocationStrategy comparator) throws InventoryAllocationException {
 		parkingInv = new ParkingInventory(capacity, comparator);
