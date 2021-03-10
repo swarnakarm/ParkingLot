@@ -28,6 +28,9 @@ public class ParkingInventory {
 	}
 
 	boolean validate(ParkingSlot slot) {
+		if(count == capacity){
+			return false;
+		}
 		if (slot.getParkingSeq() > 0 && slot.getParkingSeq() <= capacity) {
 			for (int i = 0; i < count; i++) {
 				if (inv[i].getParkingSeq() == slot.getParkingSeq()) {

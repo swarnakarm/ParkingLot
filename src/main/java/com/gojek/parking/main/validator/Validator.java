@@ -15,8 +15,17 @@ public class Validator {
 		if (key != null) {
 			switch (key) {
 			case CREATE:
-				if (command.length != 2 && Integer.parseInt(command[1]) < 1) {
+				if (command.length != 2) {
 					return false;
+				} else {
+					 try{
+						 int lotCount = Integer.parseInt(command[1]);
+						 if(lotCount < 1){
+							 return false;
+						 }
+					 } catch(Exception ex){
+						 return false;
+					 }
 				}
 				break;
 			case PARK:
@@ -29,8 +38,17 @@ public class Validator {
 				}
 				break;
 			case LEAVE:
-				if (command.length != 2 && Integer.parseInt(command[1]) < 1) {
+				if (command.length != 2){
 					return false;
+				} else {
+					try{
+						 int lotCount = Integer.parseInt(command[1]);
+						 if(lotCount < 1){
+							 return false;
+						 }
+					 } catch(Exception ex){
+						 return false;
+					 }
 				}
 				break;
 			case COLOR_CAR_REGISTRATION_STATUS:
