@@ -16,7 +16,7 @@ public class InstructionProcessor {
 
 	private ParkingLot parkingLot = null;
 
-	public void execute(Instruction instruction, String[] additionArgs)
+	public void process(Instruction instruction, String[] additionArgs)
 			throws InvalidInstructionException, InventoryAllocationException {
 		switch (instruction) {
 		case CREATE:

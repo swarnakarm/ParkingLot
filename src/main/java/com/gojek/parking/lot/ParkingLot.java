@@ -56,6 +56,7 @@ public class ParkingLot {
 	}
 
 	public void status() {
+		System.out.println("Slot No.	Registration No	Colour");
 		for (Map.Entry<Integer, Car> slotMapStatusEntry : occupliedSlot.entrySet()) {
 			Car car = slotMapStatusEntry.getValue();
 			System.out.println(slotMapStatusEntry.getKey() + " " + car.getRegistrationNo() + " " + car.getColour());

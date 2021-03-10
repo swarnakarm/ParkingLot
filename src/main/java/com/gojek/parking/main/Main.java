@@ -31,7 +31,7 @@ public class Main {
 				if(Validator.validateCommand(str)){
 					String instructionLine[] = str.split(" ");
 					Instruction instruction = Instruction.getInstruction(instructionLine[0]);
-					processor.execute(instruction, instructionLine);
+					processor.process(instruction, instructionLine);
 				} else {
 					System.out.println("Invalid Command.");
 				}

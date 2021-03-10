@@ -1,4 +1,4 @@
-package com.gojek.parking.inventory;
+package com.gojek.parking.validator;
 
 import org.junit.Assert;
 import org.junit.Test;
