@@ -26,5 +26,6 @@ public class ColorCarStatusExecutor implements InstructionExecutor {
 			Car car = parkingLot.carInSlot(seqNo);
 			System.out.print(car.getRegistrationNo() + " ");
 		}
+		System.out.println();
 	}
 }
