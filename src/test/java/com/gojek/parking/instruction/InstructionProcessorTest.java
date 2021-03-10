@@ -27,11 +27,10 @@ public class InstructionProcessorTest {
 		InstructionProcessor processor = new InstructionProcessor();
 		processor.process(Instruction.CREATE, new String[]{"create_parking_lot","6"});
 		processor.process(Instruction.PARK, new String[]{"park","KA-01-P-333", "White"});
-		processor.process(Instruction.LEAVE, new String[]{"leave","4"});
+		processor.process(Instruction.LEAVE, new String[]{"leave","1"});
 		processor.process(Instruction.STATUS, new String[]{"status"});
 		processor.process(Instruction.STATUS, 
 				new String[]{"registration_numbers_for_cars_with_colour","White"});
 	}
-	
-	
+		
 }
